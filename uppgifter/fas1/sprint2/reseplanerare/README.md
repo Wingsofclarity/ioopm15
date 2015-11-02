@@ -1,8 +1,3 @@
-**Notera att denna fil kommer att uppdateras med tips på mål etc.
-Jag ruschar ut den nu så att ingen blockerar på den. 
-Med reservationer för eventuella ändringar, alltså. Det kommer
-också att komma fler tips och mer hjälp. /Tobias**
-
 
 # Reseplanerare 1.0
 
@@ -91,13 +86,13 @@ stationsnamn och datat är en lista över alla hålltider.
 
 Reseplaneraren använder Dijkstras algoritm för grafsökning. Den
 tittar på kortaste sträckan vidare, men tar inte bytestid med i
-beräkningen. Låt T vara den tid som vi anlöper hållplats H1. Vi
+beräkningen. Låt *T* vara den tid som vi anlöper hållplats H1. Vi
 vill vidare till H2 och det finns två bussar -- B1 och B2. B1 är
 den vi sitter på -- då är "kostnaden" för att åka från H1 till H2
-med B1 just den vikt V som står på bågen mellan noderna (så långt
+med B1 just den vikt *V* som står på bågen mellan noderna (så långt
 är allt oförändrat). För B2 måste vi dock slå upp i tidtabellen
-när närmaste avgång är. Om den är vid tiden T', så kan vi räkna ut
-"kostnaden" att åka H1 till H2 med B2 som T' - T + V.
+när närmaste avgång är. Om den är vid tiden *T'*, så kan vi räkna ut
+"kostnaden" att åka H1 till H2 med B2 som *T'* - *T* + *V*.
 
 Efter denna förändring kommer alltså reseplaneraren att jämföra
 två resor med avseende på tiden de tar, inklusive byten och väntan.
@@ -112,6 +107,13 @@ använda en [funktionspekare](http://c.learncodethehardway.org/book/ex18.html).
 ## Steg 3: Fixa minnesläckage
 
 Det finns minnesläckage i programmet. De skall åtgärdas! 
+
+Som gåtts igenom redan i introuppgiften kan man med fördel använda
+[valgrind](http://valgrind.org) för att [hitta minnesfel](http://valgrind.org/docs/manual/quick-start.html). Om du kör
+`valgrind --leak-check=full ./mittprogram` så visas läckagen, och
+även om programmet läser minne innan det har initierats, t.ex.
+om jag deklarerar en variabel och glömmer bort att den inte är
+nollställd automatiskt. 
 
 
 ## Steg 4: Dokumentation
@@ -136,7 +138,7 @@ $ ./travel --from Polacksbacken --to "Uppsala C" --start 15:30
 för att få fram snabbaste resvägen från Polacksbacken till 
 Uppsala C som avgår 15:30. Programmet skall titta på den 
 närmaste avgången efter 15:30 och använda det som *senaste
-tillåtna ankomsttid*. Programmet skall titta på alla bussar
+tillåtna avgångstid*. Programmet skall titta på alla bussar
 som avgår mellan starttid och senaste ankomsttid från 
 Polacksbacken (i detta exempel) för att hitta den som har
 kortaste resväg i minuter. 
@@ -147,3 +149,18 @@ kortaste resväg i minuter.
 Du uppmanas å det starkaste att lägga till tester för allt du
 skriver! Det är inte (ännu) ett krav, men det kommer att hjälpa dig!
 Använd också programmets tester för regressionstester! 
+
+
+# Förslag på 3-mål att redovisa
+
+1. [Inluppsmål 2](http://auportal.herokuapp.com/achievements/101)
+2. [F13](http://auportal.herokuapp.com/achievements/13) -- finns flera lämpliga delar av programmet 
+3. [J26](http://auportal.herokuapp.com/achievements/26) -- vad behöver sparas på heapen, och varför?
+4. [G15](http://auportal.herokuapp.com/achievements/15) -- t.ex. vid inläsning
+5. [J27](http://auportal.herokuapp.com/achievements/27) -- faller ut av uppgiften
+7. Fortsätt med [C7](http://auportal.herokuapp.com/achievements/7) -- du vill inte behöva efterskapa saker sedan (**Du kan alltså inte redovisa detta redan nu.**)
+
+# Förslag på 4/5-mål att redovisa
+
+1. [K31](http://auportal.herokuapp.com/achievements/31) -- motivera din modularisering, eller den som är gjord
+2. [M39](http://auportal.herokuapp.com/achievements/39) -- vid insättning/uttag ur länkade strukturer
